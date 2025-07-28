@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('img/app2.jpg') no-repeat center center/cover;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            width: 400px;
+			height:550px;
+        }
+        .container h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .container input, .container select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            outline: none;
+        }
+        .container input::placeholder, .container select {
+            color: #ddd;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .container button:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Book an Appointment</h2>
+    <form action="insert_appointment.php" method="POST">
+        <input type="text" name="customer_name" placeholder="Your Name" required>
+		<br>
+        <input type="email" name="customer_email" placeholder="Your Email" required>
+		<br>
+        <input type="date" name="appointment_date" required>
+		<br>
+        <input type="time" name="appointment_time" required>
+		<br>
+        <br>
+        
+		<select name="service" required>
+            <option value="" disabled selected>Select Service</option>
+            <option value="Gym Training">Gym Training</option>
+            <option value="Personal Coaching">Personal Coaching</option>
+            <option value="Yoga Session">Yoga Session</option>
+        </select>
+        <br>
+		<br>
+        
+		<select name="staff_id" required>
+            <option value="" disabled selected>Select Trainer</option>
+            <option value="1">Trainer John</option>
+            <option value="2">Coach Lisa</option>
+        </select>
+        
+		<br>
+		<br>
+		
+        <button type="submit">Book Appointment</button>
+		<a href="staff_dashboard.html"></a>
+    </form>
+</div>
+
+</body>
+</html>

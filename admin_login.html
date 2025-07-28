@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url('img/login-3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            margin-top: 10px;
+            text-align: left;
+            color: #fff;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0 15px 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #000; /* Black text for better visibility */
+            font-size: 16px;
+            outline: none;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            background: rgba(255, 255, 255, 0.5);
+            color: #000;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .forgot-password {
+            margin-top: 10px;
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function redirectAdmin(event) {
+            event.preventDefault();
+            
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            
+            if (username && password) {
+                window.location.href = "admin.html";
+            } else {
+                alert("Please enter username and password.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <form onsubmit="redirectAdmin(event)">
+        <h1>Admin Login</h1>
+
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Login">
+        
+        <a href="#" class="forgot-password">Forgot Password?</a>
+    </form>
+
+</body>
+</html>

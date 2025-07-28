@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard | Gym</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('img/app2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background-color: #dc3545;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+        .dashboard {
+            padding: 60px 30px;
+        }
+        .dashboard h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .feature-box {
+            background-color: rgba(255, 255, 255, 0.95);
+            color: #000;
+            border-radius: 15px;
+            padding: 25px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+        .feature-box:hover {
+            transform: scale(1.03);
+        }
+        .feature-box h4 {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .btn-theme {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .btn-theme:hover {
+            background-color: #218838;
+        }
+		
+		/* Custom background color for toast */
+        .toast {
+            background-color: #007bff !important;  /* Blue background */
+        }
+
+        /* Custom font color for toast */
+        .toast-body {
+            color: #fff !important;  /* White font color */
+        }
+
+        /* Custom toast close button color */
+        .btn-close-white {
+            color: #fff;  /* White close button */
+        }
+    </style>
+</head>
+<body>
+
+<button class="logout-btn" onclick="logout()">Logout</button>
+
+<div class="container dashboard">
+    <h2>Welcome to Your Gym Dashboard</h2>
+
+    <div class="grid-container">
+        <div class="feature-box">
+            <h4>Personal Profile</h4>
+            <p><strong>Name:</strong> Rom</p>
+            <p><strong>Email:</strong> Rom12@gmail.com</p>
+            <p><strong>Phone:</strong> 0745896321</p>
+            
+        </div>
+
+        <div class="feature-box">
+            <h4>Subscribed Plans</h4>
+            <p>Gold Monthly Plan</p>
+            <p>Expires: 30-Apr-2025</p>
+			<a href="services.html" class="btn-theme mt-2">Plans</a>
+        </div>
+
+        <div class="feature-box">
+            <h4>Workout Schedule</h4>
+            <p>Monday: Cardio</p>
+            <p>Wednesday: Weights</p>
+            <p>Friday: Yoga</p>
+			<a href="class-timetable.html" class="btn-theme mt-2">View Class</a>
+        </div>
+
+        <div class="feature-box">
+            <h4>Payment History</h4>
+            <p>Last Payment:Mar 2025</p>
+            <p>Status: Paid</p>
+        </div>
+
+        <div class="feature-box">
+            <h4>Progress Tracker</h4>
+            <p>Weight: 70kg → 65kg</p>
+            <p>Workouts Completed: 32</p>
+        </div>
+
+        <div class="feature-box">
+            <h4>Book Personal Trainer</h4>
+            <p>Need personal training? Book now!</p>
+            <a href="appointment_form.html" class="btn-theme mt-2">Book Now</a>
+        </div>
+    </div>
+</div>
+
+<!-- Update Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+            <form action="update_user.php" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Profile</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="name" class="form-control mb-2" placeholder="Name">
+                    <input type="email" name="email" class="form-control mb-2" placeholder="Email">
+                    <input type="password" name="password" class="form-control mb-2" placeholder="New Password">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-theme">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Notification Toast -->
+<div class="toast-container position-fixed top-50 end-50 p-3">
+    <div id="notifToast" class="toast align-items-center text-bg-dark border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body">You have a new workout reminder!</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function logout() {
+        window.location.href = "login.html";
+    }
+
+    setTimeout(() => {
+        const notif = new bootstrap.Toast(document.getElementById('notifToast'));
+        notif.show();
+    }, 2000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url('img/login-1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            margin-top: 10px;
+            text-align: left;
+            color: #fff;
+        }
+
+        input[type="text"], input[type="password"], select {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0 15px 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #000; /* Black text for better visibility */
+            font-size: 16px;
+            outline: none;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus, select:focus {
+            background: rgba(255, 255, 255, 0.5);
+            color: #000;
+        }
+
+        select {
+            appearance: none;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #000; /* Make text inside dropdown visible */
+            font-weight: bold;
+        }
+
+        input[type="submit"], input[type="reset"] {
+            width: 48%;
+            padding: 12px;
+            margin: 10px 1%;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover, input[type="reset"]:hover {
+            background-color: #0056b3;
+        }
+
+        .register-link {
+            margin-top: 15px;
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .register-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function redirectUser(event) {
+            event.preventDefault();
+            
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var role = document.getElementById("role").value;
+            
+            if (username && password) {
+                if (role === "admin") {
+                    window.location.href = "admin.html";
+                } else if (role === "staff") {
+                    window.location.href = "staff_dashboard.html";
+                } else if (role === "user") {
+                    window.location.href = "user_dashboard.html"; // Redirect new users to their dashboard
+                } else {
+                    alert("Invalid role selected.");
+                }
+            } else {
+                alert("Please enter username and password.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <form method="POST"  onsubmit="redirectUser(event)">
+        <h1>Login</h1>
+
+        <label for="username">User Name</label>
+        <input type="text" id="username" name="un" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="pass" required>
+
+        <label for="role">Login as</label>
+        <select id="role" name="role" required>
+           <!-- <option value="admin">Admin</option> -->
+            <option value="staff">Staff</option>
+            <option value="user">User</option> <!-- New Users -->
+        </select>
+
+        <input type="submit" value="Login">
+        
+        <a href="register.php" class="register-link">Don't have an account? Register here</a>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | Admin Dashboard</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #fff;
+            color: #333;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .settings-box {
+            background: #f2f2f2;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        h2, h4 {
+            color: #333;
+        }
+
+        .admin-icon {
+            font-size: 25px;
+            cursor: pointer;
+            color: #ff6600;
+            float: right;
+        }
+
+        .modal-content {
+            background: #fff;
+            color: #333;
+        }
+
+        .btn-custom {
+            margin-top: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 class="text-center">Settings</h2>
+<br>
+<br>
+        <!-- Gym Preferences Box -->
+        <div class="settings-box">
+            <h4>Gym Preferences <span class="admin-icon" data-toggle="modal" data-target="#adminModal"></span></h4>
+            <p>Manage gym settings and admin preferences.</p>
+            <button class="btn btn-info btn-custom" data-toggle="modal" data-target="#preferencesModal">Update Gym Preferences</button>
+        </div>
+<br>
+
+        <!-- Add New Admin Box -->
+        <div class="settings-box">
+            <h4>Add New Admin</h4>
+			<p>Add new admin for on purpose.</p>
+            <button class="btn btn-info btn-custom" data-toggle="modal" data-target="#adminModal">Add New Admin</button>
+        </div>
+<br>
+
+        <!-- Add New Staff Box -->
+        <div class="settings-box">
+            <h4>Add New Staff</h4>
+			<p>Add new staff for more improve our gym.</p>
+		<button class="btn btn-info btn-custom" data-toggle="modal" data-target="#staffModal">Add New Staff</button>
+        </div>
+
+    </div>
+
+    <!-- Add New Admin Modal -->
+    <div class="modal fade" id="adminModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add New Admin</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="admin_name" class="form-control" placeholder="Admin Name"><br>
+                    <input type="email" id="admin_email" class="form-control" placeholder="Admin Email"><br>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info" onclick="addAdmin()">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add New Staff Modal -->
+    <div class="modal fade" id="staffModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add New Staff</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="staff_name" class="form-control" placeholder="Staff Name"><br>
+                    <input type="email" id="staff_email" class="form-control" placeholder="Staff Email"><br>
+                    <input type="text" id="staff_role" class="form-control" placeholder="Staff Role"><br>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info" onclick="addStaff()">Add Staff</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Gym Preferences Modal -->
+    <div class="modal fade" id="preferencesModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Gym Preferences</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <textarea id="gym_preferences" class="form-control" placeholder="Update Gym Preferences"></textarea><br>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info" onclick="updatePreferences()">Update Preferences</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        // Add New Admin
+        function addAdmin() {
+            var name = $("#admin_name").val();
+            var email = $("#admin_email").val();
+
+            $.ajax({
+                url: "add_admin.php",
+                type: "POST",
+                data: { name: name, email: email },
+                success: function () {
+                    $("#adminModal").modal('hide');
+                    alert("Admin Added Successfully!");
+                }
+            });
+        }
+
+        // Add New Staff
+        function addStaff() {
+            var name = $("#staff_name").val();
+            var email = $("#staff_email").val();
+            var role = $("#staff_role").val();
+
+            $.ajax({
+                url: "add_staff.php",
+                type: "POST",
+                data: { name: name, email: email, role: role },
+                success: function () {
+                    $("#staffModal").modal('hide');
+                    alert("Staff Added Successfully!");
+                }
+            });
+        }
+
+        // Update Gym Preferences
+        function updatePreferences() {
+            var preferences = $("#gym_preferences").val();
+
+            $.ajax({
+                url: "update_preferences.php",
+                type: "POST",
+                data: { preferences: preferences },
+                success: function () {
+                    $("#preferencesModal").modal('hide');
+                    alert("Preferences Updated Successfully!");
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

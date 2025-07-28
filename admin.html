@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gym Admin Dashboard">
+    <title>Admin Dashboard | GYM</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #141E30, #243B55);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            color: #fff;
+        }
+        .hero-section {
+            background: url("img/hero/hero-2.jpg") no-repeat center;
+            background-size: cover;
+            padding: 120px 0;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .hero-section h1 {
+            font-size: 50px;
+            font-weight: 700;
+            color: #fff;
+            position: relative;
+            z-index: 2;
+            animation: slideInDown 1s ease-in-out;
+        }
+        .hero-section p {
+            font-size: 18px;
+            color: #ddd;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+        .admin-dashboard {
+            padding: 80px 0;
+            text-align: center;
+            background: #f4f4f4;
+            color: #333;
+        }
+        .admin-dashboard h2 {
+            font-size: 38px;
+            margin-bottom: 30px;
+            animation: zoomIn 1s ease-in-out;
+        }
+        .admin-content {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: #1e3c72;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            color: #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.5);
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            color: #ffcc00;
+        }
+        .card p {
+            opacity: 0.9;
+        }
+        .btn {
+            background: #ffcc00;
+            color: #1e3c72;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #fff;
+            color: #1e3c72;
+        }
+        .footer-section {
+            background: #141E30;
+            color: #ddd;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Admin Dashboard</h1>
+            <p>Built Your Body.</p>
+        </div>
+    </section>
+	
+	<header class="header-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="logo">
+                            <img src="img/logo.png" alt="">
+                    </div>
+                </div>
+				</div>
+				</div>
+				</header>
+				
+
+    <!-- Admin Dashboard -->
+    <section class="admin-dashboard">
+        <div class="container">
+            <h2>Admin Controls</h2>
+            <div class="admin-content">
+                <div class="card">
+                    <h3>Manage Classes</h3>
+                    <p>Edit, add or remove gym classes.</p>
+                    <a href="class-details.html" class="btn">Manage</a>
+                </div>
+                <div class="card">
+                    <h3>View Members</h3>
+                    <p>Access member details and statistics.</p>
+                    <a href="members.html" class="btn">View</a>
+                </div>
+                <div class="card">
+                    <h3>Settings</h3>
+                    <p>Update gym settings and preferences.</p>
+                    <a href="settings.html" class="btn">Settings</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Footer Section Begin -->
+    <section class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="fs-about">
+                        <div class="fa-logo">
+                            <a href="#"><img src="img/logo.png" alt=""></a>
+                        </div>
+                        <p>A Stronger Tomorrow Starts Today | Join the Fitness Revolution.</p>
+                        <div class="fa-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa  fa-envelope-o"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="fs-widget">
+                        <h4>Useful links</h4>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Classes</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="fs-widget">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">My account</a></li>
+                            <li><a href="#">Subscribe</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="fs-widget">
+                        <h4>Tips & Guides</h4>
+                        <div class="fw-recent">
+                            <h6><a href="#">Physical fitness may help prevent depression, anxiety...</a></h6>
+                            <ul>
+                                <li>3 min read</li>
+                                <li>20 Comment</li>
+                            </ul>
+                        </div>
+                        <div class="fw-recent">
+                            <h6><a href="#">Fitness: The best exercise to lose belly fat and tone up...</a></h6>
+                            <ul>
+                                <li>3 min read</li>
+                                <li>20 Comment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="copyright-text">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section End -->
+
+    <!-- Scripts -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
